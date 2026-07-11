@@ -233,19 +233,31 @@
         </div>
 
         <h3>Connect it</h3>
+        <p class="sec-lede" style="margin-bottom:20px">
+          Two ways in. The <strong>remote</strong> connector is hosted — nothing to install, just
+          sign in with your pepita account. The <strong>local</strong> server runs on your machine
+          and works with any MCP client.
+        </p>
+
         <div class="term">
+          <div class="term-bar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span><span class="term-title">remote — OAuth (recommended)</span></div>
+          <div class="term-body">
+<div class="line cmt"># Claude Code — add the hosted connector; sign in on first use</div>
+<div class="line p">claude mcp add --transport http pepita https://mcp.pepita.dev/mcp</div>
+<div class="line cmt"># Claude Desktop / claude.ai → Settings → Connectors →</div>
+<div class="line cmt">#   Add custom connector → https://mcp.pepita.dev/mcp</div>
+          </div>
+        </div>
+
+        <div class="term" style="margin-top:16px">
           <div class="term-bar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span><span class="term-title">local — stdio</span></div>
           <div class="term-body">
 <div class="line cmt"># 1. authorize this device once (opens the browser)</div>
 <div class="line p">npx @pepitahq/cli login</div>
-<div class="line cmt"># 2. add the connector to Claude Code</div>
-<div class="line p">claude mcp add pepita -- npx -y @pepitahq/mcp</div>
+<div class="line cmt"># 2. add the local connector to Claude Code</div>
+<div class="line p">claude mcp add pepita-local -- npx -y @pepitahq/mcp</div>
           </div>
         </div>
-        <p class="sec-lede" style="margin-top:20px">
-          A <strong>remote connector</strong> (OAuth sign-in, nothing to install) is on the way to the
-          Claude Connectors directory. The local server above works today with any MCP client.
-        </p>
 
         <h3>Try these</h3>
         <div class="prompts">
