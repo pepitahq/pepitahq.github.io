@@ -4,10 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>pepita for Claude & the terminal — docs</title>
-  <meta name="description" content="Read, edit, save, and publish your pepita websites from Claude (MCP connector) or your terminal (the pepita CLI)." />
+  <meta name="description" content="Read, edit, publish, and share your pepita websites from Claude (MCP connector) or your terminal (the pepita CLI)." />
   <meta name="robots" content="index, follow" />
   <meta property="og:title" content="pepita — drive your site from Claude or the terminal" />
-  <meta property="og:description" content="The pepita MCP connector and CLI: read, edit, save, and publish your sites without opening the editor." />
+  <meta property="og:description" content="The pepita MCP connector and CLI: read, edit, publish, and share your sites without opening the editor." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://pepitahq.github.io/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -177,8 +177,8 @@
         <h1>Drive your website from <em>Claude</em>, or the <em>terminal</em>.</h1>
         <p class="lede">
           pepita is a website builder for people who'd rather not build a website. These two
-          tools do the same things the editor does — read files, make edits, save a draft, publish
-          — without opening it. Same account, same sites, no new passwords.
+          tools do the same things the editor does — read files, make edits, publish, and spin up
+          shareable preview links — without opening it. Same account, same sites, no new passwords.
         </p>
 
         <div class="term" role="img" aria-label="Example: asking Claude to edit and publish a pepita site">
@@ -189,10 +189,12 @@
           <div class="term-body">
 <div class="line ask">List my pepita sites, then read index.html on my-landing.</div>
 <div class="line out">→ 3 sites. my-landing/index.html (52 KB), styles.css, …</div>
-<div class="line ask">Change the hero headline to "Roofing done right" and save a draft.</div>
-<div class="line out">→ wrote index.html · saved to my-landing--draft.pepita.dev</div>
+<div class="line ask">Change the hero headline to "Roofing done right".</div>
+<div class="line out">→ wrote index.html</div>
+<div class="line ask">Give me a preview link I can send my client.</div>
+<div class="line out">→ preview ready → my-landing--a1b2.pepita.page</div>
 <div class="line ask">Looks good — publish it.</div>
-<div class="line out">→ published → my-landing.pepita.dev<span class="caret"></span></div>
+<div class="line out">→ published → my-landing.pepita.page<span class="caret"></span></div>
           </div>
         </div>
       </section>
@@ -205,20 +207,23 @@
         </div>
         <p class="sec-lede">
           Connect pepita to Claude (Claude Code, Claude Desktop, or the MCP Inspector) and edit your
-          sites in plain language. It exposes seven tools — four that read, three that change your
-          working copy. Edits show up live in the pepita web editor too, so you can move between the
-          chat and the visual editor mid-task.
+          sites in plain language. It exposes ten tools — five that read your sites, five that edit
+          them, publish, or manage shareable preview links. Edits show up live in the pepita web
+          editor too, so you can move between the chat and the visual editor mid-task.
         </p>
 
         <h3>Tools</h3>
         <div class="rows">
           <div class="row"><code>list_sites</code><span class="desc">Your sites and their URLs.<span class="tag read">read</span></span></div>
-          <div class="row"><code>get_status</code><span class="desc">A site's unsaved changes and links.<span class="tag read">read</span></span></div>
-          <div class="row"><code>list_files</code><span class="desc">The file tree of a site.<span class="tag read">read</span></span></div>
-          <div class="row"><code>read_file</code><span class="desc">The contents of one file.<span class="tag read">read</span></span></div>
-          <div class="row"><code>write_file</code><span class="desc">Create or edit a file in the unsaved working copy.<span class="tag write">writes</span></span></div>
-          <div class="row"><code>save</code><span class="desc">Save the working copy to the draft (the <code>--draft</code> staging URL).<span class="tag write">writes</span></span></div>
-          <div class="row"><code>publish</code><span class="desc">Promote the draft to your live site.<span class="tag write">writes</span></span></div>
+          <div class="row"><code>get_status</code><span class="desc">A site's pending changes and links.<span class="tag read">read</span></span></div>
+          <div class="row"><code>list_site_files</code><span class="desc">The file tree of a site.<span class="tag read">read</span></span></div>
+          <div class="row"><code>read_site_file</code><span class="desc">The contents of one file.<span class="tag read">read</span></span></div>
+          <div class="row"><code>write_site_file</code><span class="desc">Create or edit a file in the site.<span class="tag write">writes</span></span></div>
+          <div class="row"><code>publish</code><span class="desc">Put the current site live.<span class="tag write">writes</span></span></div>
+          <div class="row"><code>create_preview</code><span class="desc">Freeze the current site as a new shareable link.<span class="tag write">writes</span></span></div>
+          <div class="row"><code>update_preview</code><span class="desc">Push the current site onto an existing preview link.<span class="tag write">writes</span></span></div>
+          <div class="row"><code>list_previews</code><span class="desc">A site's active preview links.<span class="tag read">read</span></span></div>
+          <div class="row"><code>delete_preview</code><span class="desc">Stop serving a preview link (restorable from History).<span class="tag write">writes</span></span></div>
         </div>
 
         <div class="callout">
@@ -245,8 +250,9 @@
         <h3>Try these</h3>
         <div class="prompts">
           <p class="prompt">List my pepita sites and show me the files in &lt;slug&gt;.</p>
-          <p class="prompt">On &lt;slug&gt;, rewrite the About section to be warmer and save a draft.</p>
-          <p class="prompt">Publish &lt;slug&gt;'s latest draft to the live site.</p>
+          <p class="prompt">On &lt;slug&gt;, rewrite the About section to be warmer.</p>
+          <p class="prompt">Give me a shareable preview link for &lt;slug&gt; to send my client.</p>
+          <p class="prompt">Publish &lt;slug&gt; to the live site.</p>
         </div>
       </section>
 
@@ -275,11 +281,14 @@
         <h3>Commands</h3>
         <div class="rows">
           <div class="row"><code>pepita list</code><span class="desc">Your sites.</span></div>
+          <div class="row"><code>pepita create &lt;name&gt;</code><span class="desc">Create a new site (optionally from a local folder).</span></div>
           <div class="row"><code>pepita pull &lt;slug&gt;</code><span class="desc">Download a site's files to a local folder.</span></div>
-          <div class="row"><code>pepita push &lt;slug&gt;</code><span class="desc">Upload local changes as unsaved edits (confirm-gated).</span></div>
-          <div class="row"><code>pepita save &lt;slug&gt;</code><span class="desc">Save the working copy to the draft.</span></div>
-          <div class="row"><code>pepita publish &lt;slug&gt;</code><span class="desc">Promote the draft to live.</span></div>
-          <div class="row"><code>pepita status &lt;slug&gt;</code><span class="desc">Unsaved changes and URLs.</span></div>
+          <div class="row"><code>pepita apply &lt;slug&gt;</code><span class="desc">Upload local changes into the working copy (confirm-gated).</span></div>
+          <div class="row"><code>pepita preview &lt;slug&gt;</code><span class="desc">Create, update, or remove a shareable preview link.</span></div>
+          <div class="row"><code>pepita previews &lt;slug&gt;</code><span class="desc">List active preview links.</span></div>
+          <div class="row"><code>pepita publish &lt;slug&gt;</code><span class="desc">Put the current site live.</span></div>
+          <div class="row"><code>pepita status &lt;slug&gt;</code><span class="desc">Pending changes and URLs.</span></div>
+          <div class="row"><code>pepita delete &lt;slug&gt;</code><span class="desc">Permanently delete a site (optional snapshot first).</span></div>
           <div class="row"><code>pepita whoami</code> · <code>logout</code><span class="desc">Who you are · sign out (revokes the device).</span></div>
         </div>
 
@@ -289,9 +298,10 @@
           <div class="term-body">
 <div class="line p">pepita pull my-landing --dir ./my-landing</div>
 <div class="line cmt"># …edit files with your own tools…</div>
-<div class="line p">pepita push my-landing --dir ./my-landing</div>
-<div class="line p">pepita save my-landing && pepita publish my-landing</div>
-<div class="line out">→ published → my-landing.pepita.dev<span class="caret"></span></div>
+<div class="line p">pepita apply my-landing --dir ./my-landing</div>
+<div class="line p">pepita preview my-landing   # a shareable link to review first</div>
+<div class="line p">pepita publish my-landing</div>
+<div class="line out">→ published → my-landing.pepita.page<span class="caret"></span></div>
           </div>
         </div>
 
